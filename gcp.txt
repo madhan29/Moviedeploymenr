@@ -1,0 +1,18 @@
+mvn com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/moviebooking-39/moviebooking:v1
+
+docker run -ti --rm -p 8085:8085 gcr.io/moviebookingapp-3/movie:v1
+
+docker build -t gcr.io/madhan1025-cts/moviefe:v1 .
+
+docker push gcr.io/madhan1025-cts/moviefe:v1
+
+gsutil cors set cors.json gs://newmovie
+
+gsutil rsync -r gs://frontendmovieapp ./moviefe
+
+cd C:\Program Files (x86)\Google\Chrome\Application
+chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+
+chrome.exe --user-data-dir="C:/Projects" --disable-web-security
+
+https://moviebooking-39.uc.r.appspot.com/
